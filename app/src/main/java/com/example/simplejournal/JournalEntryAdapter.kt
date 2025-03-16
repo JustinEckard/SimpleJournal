@@ -22,7 +22,7 @@ class JournalEntryAdapter(
 
         fun bind(entry: JournalEntry) {
             titleTextView.text = entry.title
-            val dateFormat = SimpleDateFormat("MMMM d, yyyy", Locale.getDefault()) // Corrected date format
+            val dateFormat = SimpleDateFormat("MMMM d, yyyy", Locale.getDefault())
             dateTextView.text = dateFormat.format(entry.createdAt)
             contentTextView.text = entry.content
 
@@ -42,11 +42,10 @@ class JournalEntryAdapter(
     }
 
     override fun onBindViewHolder(holder: JournalEntryViewHolder, position: Int) {
-        val currentEntry = getItem(position) // Use getItem() from ListAdapter
+        val currentEntry = getItem(position)
         holder.bind(currentEntry)
     }
 
-    // DiffUtil Callback
     class JournalEntryDiffCallback : DiffUtil.ItemCallback<JournalEntry>() {
         override fun areItemsTheSame(oldItem: JournalEntry, newItem: JournalEntry): Boolean {
             return oldItem.id == newItem.id

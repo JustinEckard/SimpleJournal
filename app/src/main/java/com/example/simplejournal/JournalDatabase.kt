@@ -23,7 +23,7 @@ abstract class JournalDatabase : RoomDatabase() {
                     JournalDatabase::class.java,
                     "journal_database"
                 )
-                    .fallbackToDestructiveMigration() // For simplicity, allows database to be recreated on schema changes
+                    .fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance
                 instance

@@ -1,4 +1,4 @@
-package com.example.simplejournal // Make sure this matches your package name
+package com.example.simplejournal
 
 import androidx.room.TypeConverter
 import java.util.Date

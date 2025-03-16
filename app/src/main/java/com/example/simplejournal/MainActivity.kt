@@ -1,5 +1,5 @@
 package com.example.simplejournal
-import android.widget.Button // Add this import at the top of MainActivity.kt
+import android.widget.Button
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -56,18 +56,16 @@ class MainActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             journalDao.getAllEntries().collectLatest { entries ->
-//                Log.d("MainActivity", "Number of entries received: ${entries.size}")
                 adapter.submitList(entries)
             }
         }
 
-        val addButton: Button = findViewById(R.id.addButton) // Find the new Button
+        val addButton: Button = findViewById(R.id.addButton)
         addButton.setOnClickListener {
             val intent = android.content.Intent(this, EditEntryActivity::class.java)
             startActivityForResult(intent, NEW_ENTRY_REQUEST_CODE)
         }
 
-        // No need to find or setOnClickListener for fabAdd anymore
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: android.content.Intent?) {

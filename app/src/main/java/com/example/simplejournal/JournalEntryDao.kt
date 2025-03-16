@@ -1,4 +1,4 @@
-package com.example.simplejournal // Make sure this matches your package name
+package com.example.simplejournal
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
@@ -21,3 +21,5 @@ interface JournalEntryDao {
     @Query("SELECT * FROM journal_entries WHERE id = :id")
     suspend fun getEntryById(id: Long): JournalEntry?
 }
+
+

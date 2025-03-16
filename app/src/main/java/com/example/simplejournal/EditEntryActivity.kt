@@ -26,7 +26,7 @@ class EditEntryActivity : AppCompatActivity() {
         editTextContent = findViewById(R.id.editTextContent)
         fabSave = findViewById(R.id.fabSave)
 
-        // Check if we are editing an existing entry
+
         if (intent.hasExtra(MainActivity.EXTRA_ENTRY_ID)) {
             entryId = intent.getLongExtra(MainActivity.EXTRA_ENTRY_ID, -1L)
             val title = intent.getStringExtra(MainActivity.EXTRA_ENTRY_TITLE)
@@ -42,7 +42,6 @@ class EditEntryActivity : AppCompatActivity() {
 
             lifecycleScope.launch {
                 if (entryId != -1L) {
-                    // Editing an existing entry
                     val existingEntry = journalDao.getEntryById(entryId)
                     existingEntry?.let {
                         it.title = title
@@ -50,11 +49,11 @@ class EditEntryActivity : AppCompatActivity() {
                         journalDao.update(it)
                     }
                 } else {
-                    // Creating a new entry
+
                     val newEntry = JournalEntry(title = title, content = content)
                     journalDao.insert(newEntry)
                 }
-                finish() // Go back to MainActivity
+                finish()
             }
         }
     }
